@@ -1,5 +1,5 @@
 import App from '../App';
-import Home from '../pages/Home';
+import Home from '@/pages/Home';
 import About from '../pages/About';
 import Product from '../pages/Product/index';
 import Item from '../pages/Product/Item';
