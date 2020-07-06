@@ -1,3 +1,8 @@
 1: yarn add customize-cra react-app-rewired  -D 
 2: webpack版本不能太高
 3: eslint
+
+redux
+  actions: 1:store唯一数据来源 { type, payload }
+           2:action创建函数（明确如何改变action）
+  reducers: 1: 单纯执行计算 (只要传入参数相同，返回计算得到的下一个 state 就一定相同)          

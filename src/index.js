@@ -1,20 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import routes from './router/index';
-// import { Provider } from "react-redux";
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
+import reducer from './reducers';
+import thunk from 'redux-thunk';
+import App from './containers/App';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      {/* kick it all off with the root route */}
-      {renderRoutes(routes)}
-    </BrowserRouter>
-  </React.StrictMode>,
+const middleware = [thunk];
+middleware.push(createLogger());
+
+let store = createStore(reducer, applyMiddleware(...middleware));
+
+// store.dispatch(getAllProducts());
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
-
-serviceWorker.unregister();
