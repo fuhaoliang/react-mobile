@@ -8,15 +8,27 @@ const receiveProducts = (products) => ({
   products,
 });
 
-// const addToCartsUnsafe = (productId) => ({
-//   type: types.ADD_TO_CART,
-//   productId,
-// });
-
 const addToCartsUnsafe = (productId) => ({
   type: types.ADD_TO_CART,
   productId,
 });
+
+export const buyProducts = (products) => (dispatch, getState) => {
+  const { cart } = getState();
+  dispatch({
+    type: types.BUY_REQUEST,
+    cart,
+  });
+
+  shop.buyProducts(products, () => {
+    dispatch({
+      type: types.BUY_SUCCESS,
+    });
+    dispatch({
+      type: types.REMOVE_CART,
+    });
+  });
+};
 
 export const getAllProducts = () => (dispatch) => {
   shop.getProducts((products) => {
@@ -24,14 +36,8 @@ export const getAllProducts = () => (dispatch) => {
   });
 };
 
-// export const addToCart = (productId) => (dispatch, getState) => {
-//   if (getState().products.byId[productId].inventory > 0) {
-//     dispatch(addToCartsUnsafe(productId));
-//   }
-// };
-
 export const addToCart = (productId) => (dispatch, getState) => {
-  if (getState().products.byIds[productId].inventory > 0) {
+  if (getState().products.byId[productId].inventory > 0) {
     dispatch(addToCartsUnsafe(productId));
   }
 };

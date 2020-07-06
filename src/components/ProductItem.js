@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Product from './Product';
 
 function ProductItem({ product, onAddToCartClicked }) {
   return (
     <div>
-      <div>
-        {product.title}-- {product.price}
-        {product.quantity ? ` x ${product.quantity}` : null}
-      </div>
+      <Product product={product} key={product} />
       <button
         onClick={onAddToCartClicked}
         disabled={product.inventory > 0 ? '' : 'disabled'}

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Product({ price, quantity, title }) {
+function Product({ product }) {
+  const { price, quantity, title } = product;
   return (
     <div>
       {title}-- {price}
@@ -11,9 +12,11 @@ function Product({ price, quantity, title }) {
 }
 
 Product.propTypes = {
-  price: PropTypes.number,
-  quantity: PropTypes.number,
-  title: PropTypes.string,
+  product: PropTypes.shape({
+    price: PropTypes.number,
+    quantity: PropTypes.number,
+    title: PropTypes.string,
+  }).isRequired,
 };
 
 export default Product;
