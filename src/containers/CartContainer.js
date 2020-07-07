@@ -6,13 +6,13 @@ import { buyProducts } from '../actions/index';
 import { getCartTotal, getCartProducts } from '../reducers/index';
 function CartContainer({ products, total, buyProducts }) {
   return (
-    <>
+    <div>
       <Cart
         products={products}
         total={total}
         onBuyProductsClicked={() => buyProducts()}
       />
-    </>
+    </div>
   );
 }
 

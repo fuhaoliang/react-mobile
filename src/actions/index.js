@@ -13,20 +13,20 @@ const addToCartsUnsafe = (productId) => ({
   productId,
 });
 
-export const buyProducts = (products) => (dispatch, getState) => {
+export const buyProducts = () => (dispatch, getState) => {
   const { cart } = getState();
   dispatch({
     type: types.BUY_REQUEST,
     cart,
   });
 
-  shop.buyProducts(products, () => {
+  shop.buyProducts(cart, () => {
     dispatch({
       type: types.BUY_SUCCESS,
     });
-    dispatch({
-      type: types.REMOVE_CART,
-    });
+    // dispatch({
+    //   type: types.REMOVE_CART,
+    // });
   });
 };
 

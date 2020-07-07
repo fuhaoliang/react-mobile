@@ -7,6 +7,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd-mobile": "^2.3.3",
+    "lib-flexible": "^0.3.2",
+    "lodash": "^4.17.15",
+    "postcss-px2rem": "^0.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -46,6 +49,7 @@
     "less": "^3.11.3",
     "less-loader": "^6.1.3",
     "prettier": "^2.0.5",
+    "react-app-rewire-postcss": "^3.0.2",
     "react-app-rewired": "^2.1.6"
   }
 }

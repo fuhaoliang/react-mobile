@@ -1,11 +1,8 @@
 import {
   ADD_TO_CART,
-  REMOVE_CART,
   BUY_REQUEST,
   BUY_FAILURE,
-  BUY_SUCCESS,
 } from '../constants/ActionsTypes';
-import { combineReducers } from 'redux';
 
 const initState = {
   addedIds: [],
@@ -22,8 +19,6 @@ const addedIds = (state = initState.addedIds, action) => {
       } else {
         return state;
       }
-    case REMOVE_CART:
-      return [];
     default:
       return state;
   }
@@ -38,8 +33,6 @@ const quantityById = (state = initState.quantityById, action) => {
         ...state,
         [productId]: (state[productId] || 0) + 1,
       };
-    case REMOVE_CART:
-      return {};
     default:
       return state;
   }
@@ -51,21 +44,15 @@ const cart = (state = initState, action) => {
       return initState;
     case BUY_FAILURE:
       return action.cart;
-    case BUY_SUCCESS:
+    default:
       return {
         addedIds: addedIds(state.addedIds, action),
         quantityById: quantityById(state.quantityById, action),
       };
-    default:
-      return state;
   }
 };
 
-export default combineReducers({
-  cart,
-  addedIds,
-  quantityById,
-});
+export default cart;
 
 // 操作购物车的方法
 // 获取购物车id

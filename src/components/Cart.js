@@ -26,11 +26,7 @@ const Cart = ({ products, total, onBuyProductsClicked }) => {
 };
 
 Cart.propTypes = {
-  product: PropTypes.shape({
-    price: PropTypes.number,
-    quantity: PropTypes.number,
-    title: PropTypes.string,
-  }),
+  products: PropTypes.array,
   total: PropTypes.number,
   onBuyProductsClicked: PropTypes.func.isRequired,
 };

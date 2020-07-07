@@ -1,7 +1,9 @@
 import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionsTypes';
 import { combineReducers } from 'redux';
+import { zipObject } from 'lodash';
 
-const products = (state, action) => {
+const productObj = (state, action) => {
+  console.info('product--->', state);
   switch (action.type) {
     case ADD_TO_CART:
       return {
@@ -18,17 +20,17 @@ const byId = (state = {}, action) => {
     case RECEIVE_PRODUCTS:
       return {
         ...state,
-        ...action.products.reduce((obj, product) => {
-          obj[product.id] = product;
-          return obj;
-        }, {}),
+        ...zipObject(
+          action.products.map((product) => product.id),
+          action.products
+        ),
       };
     default:
       const { productId } = action;
       if (productId) {
         return {
           ...state,
-          [productId]: products(state[productId], action),
+          [productId]: productObj(state[productId], action),
         };
       }
       return state;
