@@ -8,6 +8,10 @@ export default combineReducers({
   cart,
 });
 
+export const getCart = (state) => {
+  return state.cart;
+};
+
 export const getCartTotal = (state) => {
   return state.cart.addedIds.reduce(
     (total, addedId) => total + state.cart.quantityById[addedId],

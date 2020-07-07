@@ -21,8 +21,8 @@ const byId = (state = {}, action) => {
       return {
         ...state,
         ...zipObject(
-          action.products.map((product) => product.id),
-          action.products
+          action.payload.products.map((product) => product.id),
+          action.payload.products
         ),
       };
     default:
@@ -40,7 +40,7 @@ const byId = (state = {}, action) => {
 const visibleIds = (state = [], action) => {
   switch (action.type) {
     case RECEIVE_PRODUCTS:
-      return action.products.map((product) => product.id);
+      return action.payload.products.map((product) => product.id);
     default:
       return state;
   }

@@ -13,7 +13,7 @@ const initState = {
 const addedIds = (state = initState.addedIds, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const { productId } = action;
+      const { productId } = action.payload;
       if (state.indexOf(productId) === -1) {
         return state.concat([productId]);
       } else {
@@ -28,7 +28,7 @@ const addedIds = (state = initState.addedIds, action) => {
 const quantityById = (state = initState.quantityById, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      const { productId } = action;
+      const { productId } = action.payload;
       return {
         ...state,
         [productId]: (state[productId] || 0) + 1,
@@ -43,7 +43,7 @@ const cart = (state = initState, action) => {
     case BUY_REQUEST:
       return initState;
     case BUY_FAILURE:
-      return action.cart;
+      return action.payload.cart;
     default:
       return {
         addedIds: addedIds(state.addedIds, action),
