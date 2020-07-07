@@ -1,6 +1,6 @@
 import _products from './products.json';
 
-const TIMEOUT = 100;
+const TIMEOUT = 1000;
 
 export default {
   getProducts: (cd, timeout) =>

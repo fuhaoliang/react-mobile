@@ -11,12 +11,11 @@ const {
 //按需加载组件
 module.exports = override(
   addLessLoader({
-      javascriptEnabled: true,
-      modifyVars: {
-        '@primary-color': '#814a96'
-      }
-    })
-  ),
+    // javascriptEnabled: true,
+    // modifyVars: {
+    //   '@primary-color': '#814a96',
+    // },
+  }),
   fixBabelImports('lodash', {
     libraryDirectory: '',
     camel2DashComponentName: false,
