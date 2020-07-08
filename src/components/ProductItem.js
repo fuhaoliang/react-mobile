@@ -7,7 +7,7 @@ function ProductItem({ product, onAddToCartClicked }) {
     <div>
       <Product product={product} key={product} />
       <button
-        onClick={onAddToCartClicked}
+        onClick={() => onAddToCartClicked()}
         disabled={product.inventory > 0 ? '' : 'disabled'}
       >
         {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}

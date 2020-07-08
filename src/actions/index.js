@@ -1,5 +1,12 @@
 import * as types from '../constants/ActionsTypes';
 
+const REQUEST = 'REQUEST';
+const SUCCESS = 'SUCCESS';
+const FAILURE = 'FAILURE';
+
+function action(type, payload = {}) {
+  return { type, ...payload };
+}
 // actions
 
 export const getAllProducts = () => ({
@@ -7,7 +14,7 @@ export const getAllProducts = () => ({
 });
 
 export const buyProducts = (cart) => ({
-  type: types.BUY_REQUEST,
+  type: [types.BUY][SUCCESS],
   payload: { cart },
 });
 
@@ -16,13 +23,7 @@ export const receiveProducts = (products) => ({
   payload: { products },
 });
 
-const addToCartsUnsafe = (productId) => ({
+export const addToCart = (productId) => ({
   type: types.ADD_TO_CART,
   payload: { productId },
 });
-
-export const addToCart = (productId) => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
-    dispatch(addToCartsUnsafe(productId));
-  }
-};

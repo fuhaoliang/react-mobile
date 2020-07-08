@@ -2,8 +2,7 @@ import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionsTypes';
 import { combineReducers } from 'redux';
 import { zipObject } from 'lodash';
 
-const productObj = (state, action) => {
-  console.info('product--->', state);
+const productObj = (state = {}, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
@@ -26,7 +25,7 @@ const byId = (state = {}, action) => {
         ),
       };
     default:
-      const { productId } = action;
+      const { productId } = action.payload || {};
       if (productId) {
         return {
           ...state,
@@ -51,7 +50,7 @@ export default combineReducers({
   visibleIds,
 });
 
-export const getProduct = (state, id) => state.byId[id];
+export const getProduct = (state, { payload: id }) => state.byId[id];
 
 export const getVisibleProducts = (state) =>
-  state.visibleIds.map((id) => getProduct(state, id));
+  state.visibleIds.map((id) => getProduct(state, { payload: id }));

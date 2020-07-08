@@ -28,15 +28,15 @@ export function* buyProducts() {
 
   try {
     yield call(api.buyProducts, cart);
-    yield put({ type: types.BUY_SUCCESS });
+    yield put({ type: [types.BUY]['SUCCESS'] });
   } catch (error) {
-    yield put({ type: types.BUY_FAILURE, payload: { cart } });
+    yield put({ type: [types.BUY]['FAILURE'], payload: { cart } });
   }
 }
 
 export function* watchBuyProducts() {
   while (true) {
-    yield take(types.BUY_REQUEST);
+    yield take([types.BUY]['REQUEST']);
 
     yield call(buyProducts);
   }

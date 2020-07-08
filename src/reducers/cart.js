@@ -1,8 +1,7 @@
-import {
-  ADD_TO_CART,
-  BUY_REQUEST,
-  BUY_FAILURE,
-} from '../constants/ActionsTypes';
+import { ADD_TO_CART, BUY } from '../constants/ActionsTypes';
+const REQUEST = 'REQUEST';
+const SUCCESS = 'SUCCESS';
+const FAILURE = 'FAILURE';
 
 const initState = {
   addedIds: [],
@@ -40,9 +39,9 @@ const quantityById = (state = initState.quantityById, action) => {
 
 const cart = (state = initState, action) => {
   switch (action.type) {
-    case BUY_REQUEST:
+    case BUY[REQUEST]:
       return initState;
-    case BUY_FAILURE:
+    case BUY[FAILURE]:
       return action.payload.cart;
     default:
       return {
