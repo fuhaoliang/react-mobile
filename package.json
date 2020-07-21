@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd-mobile": "^2.3.3",
     "lib-flexible": "^0.3.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "postcss-px2rem": "^0.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
